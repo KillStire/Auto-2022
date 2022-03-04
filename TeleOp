@@ -1,0 +1,115 @@
+package org.firstinspires.ftc.teamcode;
+
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+
+
+
+
+    @TeleOp(name = "TelOP")
+    public class TelOP extends LinearOpMode
+    {
+        // Declare drive motors
+        private DcMotor motorLeft;
+        private DcMotor motorRight;
+        private DcMotor motorLeftB;
+        private DcMotor motorRightB;
+        private DcMotor motorUp;
+
+
+        private Servo servoOne;
+        private Servo servoTwo;
+        private DcMotor motorCar;
+
+
+
+        public void runOpMode()
+        {
+            // Initialize drive motors
+
+            motorRight = hardwareMap.dcMotor.get("motorRight");
+            motorLeft = hardwareMap.dcMotor.get("motorLeft");
+            motorRightB = hardwareMap.dcMotor.get("motorRightB");
+            motorLeftB = hardwareMap.dcMotor.get("motorLeftB");
+            motorUp = hardwareMap.dcMotor.get("motorUp");
+
+
+            servoOne = hardwareMap.servo.get("Fold");
+            servoTwo = hardwareMap.servo.get("Claw");
+            motorCar = hardwareMap.dcMotor.get("Car");
+
+            // If drive motors are given full power, robot would spin because of the motors being in
+            // opposite directions. So reverse one
+            motorLeft.setDirection(DcMotor.Direction.REVERSE);
+            motorLeftB.setDirection(DcMotor.Direction.REVERSE);
+
+            // Initialize arm servo
+            //armServo = hardwareMap.servo.get("armServo");
+
+            // Retract arm servo to stay within 18"
+//        armServo.setPosition(ARM_RETRACTED_POSITION);
+
+            // Wait until start button is pressed
+            waitForStart();
+
+            // Repeatedly run code in here until stop button is pressed
+            while(opModeIsActive())
+            {
+                // Tank drive
+                motorLeft.setPower(gamepad1.left_stick_y/2);
+                motorRight.setPower(gamepad1.right_stick_y/2);
+                motorLeftB.setPower(gamepad1.left_stick_y/2);
+                motorRightB.setPower(gamepad1.right_stick_y/2);
+                motorUp.setPower(gamepad2.left_stick_y/2);
+                servoOne.setDirection(Servo.Direction.FORWARD);
+                motorCar.setPower(gamepad2.right_trigger);
+                motorCar.setPower(gamepad2.left_trigger*-1);
+                servoOne.setPosition(0);
+
+
+
+
+
+
+
+                while (gamepad1.a){
+                    servoTwo.setPosition(.3);
+                }
+
+
+
+
+
+
+                while (gamepad1.b){
+                    servoTwo.setPosition(0);
+
+                }
+
+
+            // Move the arm servo if requested
+            /*
+            if(gamepad2.a)
+            {
+                armServo.setPosition(ARM_EXTENDED_POSITION);
+            }
+            if(gamepad2.b)
+            {
+                armServo.setPosition(ARM_RETRACTED_POSITION);
+            }
+            */
+
+                // Give hardware a chance to catch up
+                idle();
+            }
+        }
+    }
+
+
+
+
+
+
