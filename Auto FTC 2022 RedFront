@@ -61,7 +61,7 @@ public class AutoRedFront extends LinearOpMode
         motorRight.setPower(.5);
         motorLeftB.setPower(.5);
         motorRightB.setPower(.5);
-        servoOne.setPosition(0);
+        
         }
         if (runtime.seconds() > .7 && runtime.seconds() < 1){
         motorUp.setPower (.5);
@@ -72,8 +72,12 @@ public class AutoRedFront extends LinearOpMode
         motorRight.setPower(-.5);
         motorLeftB.setPower(-.5);
         motorRightB.setPower(-.5);
+      
+        
+        }
+        if (runtime.seconds() > 1 && runtime.seconds() < 1.3){
         servoOne.setPosition(0);
-        ServoTwo.setPosition(.3);
+        ServoTwo.setPosition(0.3);
         }
         if (runtime.seconds() > 1.3 && runtime.seconds() < 1.9){
         motorLeft.setPower(-.5);
