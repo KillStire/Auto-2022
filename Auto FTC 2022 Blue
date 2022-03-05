@@ -43,9 +43,6 @@ public class Auto extends LinearOpMode
         servoOne = hardwareMap.servo.get("Fold");
         servoTwo = hardwareMap.servo.get("Claw");
         motorCar = hardwareMap.dcMotor.get("Car");
-
-        motorLeft.setDirection(DcMotor.Direction.REVERSE);
-        motorLeftB.setDirection(DcMotor.Direction.REVERSE);
         runtime.reset();
         // Wait until start button is pressed
 
@@ -67,7 +64,6 @@ public class Auto extends LinearOpMode
         motorRight.setPower(0);
         motorLeftB.setPower(0);
         motorRightB.setPower(0);
-        motorCar.setPower(-.5);
         }
        
 }
