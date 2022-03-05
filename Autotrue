@@ -44,8 +44,7 @@ public class Auto extends LinearOpMode
         servoTwo = hardwareMap.servo.get("Claw");
         motorCar = hardwareMap.dcMotor.get("Car");
 
-        motorLeft.setDirection(DcMotor.Direction.REVERSE);
-        motorLeftB.setDirection(DcMotor.Direction.REVERSE);
+        
         runtime.reset();
         // Wait until start button is pressed
 
@@ -57,26 +56,25 @@ public class Auto extends LinearOpMode
         runtime.reset();
         while (opModeIsActive()) {
         
-        if (runtime.seconds() < 3 && runtime.seconds() > 2){
+        if (runtime.seconds() < .75){
         motorLeft.setPower(-.2);
         motorRight.setPower(-.2);
         motorLeftB.setPower(-.2);
         motorRightB.setPower(-.2);
         }
-        if (runtime.seconds() < 1 && runtime.seconds() > 0.5){
+        if (runtime.seconds() > .75 && runtime.seconds() < 01.25){
         motorLeft.setPower(0.5);
         motorRight.setPower(-.5);
         motorLeftB.setPower(0.5);
         motorRightB.setPower(-.5);
         }
-        if (runtime.seconds() > 3){
-        motorLeft.setPower(1);
-        motorRight.setPower(1);
-        motorLeftB.setPower(1);
-        motorRightB.setPower(1);
-        motorCar.setPower(0);
+        if (runtime.seconds() > 1.25 && runtime.seconds() < 1.75){
+        motorLeft.setPower(.3);
+        motorRight.setPower(.3);
+        motorLeftB.setPower(.3);
+        motorRightB.setPower(.3);
         }
-        if (runtime.seconds() > 5 & runtime.seconds() > 0){
+        if (runtime.seconds() > 1.75){
         motorLeft.setPower(0);
         motorRight.setPower(0);
         motorLeftB.setPower(0);
@@ -88,105 +86,3 @@ public class Auto extends LinearOpMode
     }
 }
 }
-
-
-
-
-
-
-package org.firstinspires.ftc.teamcode;
-
-
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
-
-@Autonomous(name = "Auto")
-public class Auto extends LinearOpMode
-{
-    // Declare drive motors
-    private DcMotor motorLeft;
-    private DcMotor motorRight;
-    private DcMotor motorLeftB;
-    private DcMotor motorRightB;
-    private DcMotor motorUp;
-    private DcMotor motorCar;
-    private ElapsedTime runtime = new ElapsedTime();
-
-
-    private Servo servoOne;
-    private Servo servoTwo;
-
-
-
-    public void runOpMode() {
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
-
-
-        // Initialize drive motors
-
-        motorRight = hardwareMap.dcMotor.get("motorRight");
-        motorLeft = hardwareMap.dcMotor.get("motorLeft");
-        motorUp = hardwareMap.dcMotor.get("motorUp");
-        motorRightB = hardwareMap.dcMotor.get("motorRightB");
-        motorLeftB = hardwareMap.dcMotor.get("motorLeftB");
-
-
-        servoOne = hardwareMap.servo.get("Fold");
-        servoTwo = hardwareMap.servo.get("Claw");
-        motorCar = hardwareMap.dcMotor.get("Car");
-
-        motorLeft.setDirection(DcMotor.Direction.REVERSE);
-        motorLeftB.setDirection(DcMotor.Direction.REVERSE);
-        runtime.reset();
-        // Wait until start button is pressed
-
-
-        while (opModeIsActive()) {
-            servoOne.setPosition(.1);
-        
-
-        runtime.reset();
-        while (opModeIsActive()) {
-        
-        if (runtime.seconds() < 3 && runtime.seconds() > 2){
-        motorLeft.setPower(-.2);
-        motorRight.setPower(-.2);
-        motorLeftB.setPower(-.2);
-        motorRightB.setPower(-.2);
-        }
-        if (runtime.seconds() < 1 && runtime.seconds() > 0.5){
-        motorLeft.setPower(0.5);
-        motorRight.setPower(-.5);
-        motorLeftB.setPower(0.5);
-        motorRightB.setPower(-.5);
-        }
-        if (runtime.seconds() > 3){
-        motorLeft.setPower(1);
-        motorRight.setPower(1);
-        motorLeftB.setPower(1);
-        motorRightB.setPower(1);
-        motorCar.setPower(0);
-        }
-        if (runtime.seconds() > 5 & runtime.seconds() > 0){
-        motorLeft.setPower(0);
-        motorRight.setPower(0);
-        motorLeftB.setPower(0);
-        motorRightB.setPower(0);
-        motorCar.setPower(5);
-        }
-       
-}
-    }
-}
-}
-
-
-
-
-
-
